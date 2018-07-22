@@ -272,6 +272,10 @@ func buildSidecarListenersClusters(
 
 		// set bind to port values for port redirection
 		for _, listener := range listeners {
+			if mesh.ProxyListenPort==8080 || mesh.ProxyListenPort==8081 || mesh.ProxyListenPort==10194|| mesh.ProxyListenPort==9080||mesh.ProxyListenPort==9079 {
+				listener.BindToPort = true
+				continue
+			}
 			listener.BindToPort = false
 		}
 
