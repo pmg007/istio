@@ -45,7 +45,7 @@ from flask_bootstrap import Bootstrap
 Bootstrap(app)
 
 details = {
-    "name" : "http://details:9080",
+    "name" : "http://details:9079",
     "endpoint" : "details",
     "children" : []
 }
@@ -201,6 +201,7 @@ def getProductDetails(product_id, headers):
     try:
         url = details['name'] + "/" + details['endpoint'] + "/" + str(product_id)
         res = requests.get(url, headers=headers, timeout=3.0)
+        # res = requests.get(url, headers=headers, timeout=3.0)
     except:
         res = None
     if res and res.status_code == 200:
@@ -251,8 +252,9 @@ if __name__ == '__main__':
         sys.exit(-1)
 
     p = int(sys.argv[1])
-    sys.stderr = Writer('stderr.log')
-    sys.stdout = Writer('stdout.log')
+    # sys.stderr = Writer('stderr.log')
+    # sys.stdout = Writer('stdout.log')
     print "start at port %s" % (p)
-    app.run(host='0.0.0.0', port=p, debug=True, threaded=True)
+    # app.run(host='0.0.0.0', port=p, debug=True, threaded=True)
+    app.run(host='127.0.0.1', port=p, debug=True, threaded=True)
 

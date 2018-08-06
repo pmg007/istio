@@ -25,7 +25,8 @@ end
 
 port = Integer(ARGV[0])
 
-server = WEBrick::HTTPServer.new :BindAddress => '0.0.0.0', :Port => port
+# server = WEBrick::HTTPServer.new :BindAddress => '0.0.0.0', :Port => port
+server = WEBrick::HTTPServer.new :BindAddress => '127.0.0.1', :Port => port
 
 trap 'INT' do server.shutdown end
 
